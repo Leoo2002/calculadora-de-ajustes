@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+.background{
+    background-color: rgba(194, 196, 196, 0.527);
+}
+
+body {
+    overflow-x: hidden; /* Evita el desbordamiento horizontal */
+}

@@ -1,0 +1,212 @@
+<div class="toper fondo-top text-center">
+  <h5 class="display-6 fw-bolder" style="margin: 2%; color:#ffffff; text-align: center;">¡Calculadora de Dias sin Servicio!</h5>
+</div>
+
+<!--
+
+<div class="toper fondo-top">
+  <div class="row">
+      <div class="col-12 col-md-4 d-flex align-items-center">
+          <div class="text-center">
+            <img src="img/simbolos-calculadora.png" alt="" style="width: 25%; padding: 0%;">
+          </div>
+      </div>
+      <div class="col-12 col-md-8">
+          <h5 class="display-6" style="margin-top: 2%; color:#ffffff;">¡Calculadora de Dias sin Servicio!</h5>
+      </div>
+  </div>
+</div>
+
+-->
+
+<br>
+
+<!--<img src="img/ninocalculadora.jpeg" alt="ola" class="img-fluid ninocalculadora img-thumbnail">-->
+
+<!--
+N° de Factura: B04824-10104953
+Importe: $19502.06
+Motivo: PROBLEMAS_TECNICOS
+Servicio afectado: Internet + TV
+Cantidad de días descontados: 0
+Plazo (*) de días ajustados (desde-hasta): 07/10/2024 - 07/10/2024
+Total del ajuste: $629.10
+-->
+
+<!-- TABLA MADRE (incluye info y a la derecha datos salientes)-->
+
+<div>
+  <div class="row g-0">
+    <!-- Primera columna: Imagen a la izquierda -->
+    <div class="col-md-3 d-flex align-items-center g-5">
+      <img src="/img/calculadora.jpeg" alt="ninocalculadora" class="img-fluid img-thumbnail p-0 ninocalculadora">
+    </div>
+
+    <!-- Segunda columna: Tabla izquierda -->
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-7 linea-derecha">
+          <form (ngSubmit)="Validaciones(numFactura.value,montoFactura.value,servicioAfectado.value,fechaInicio.value,fechaFin.value); $event.preventDefault();" >
+            <div class="row">
+              <div class="col cabecera bold">
+                Formulario de Ajuste
+              </div>
+            </div>
+            <div class="row renglon">
+              <div class="col-md-6 mb-3">
+                <label for="numeroFactura" class="form-label bold">N° de factura:</label>
+                <input type="text" class="form-control" id="numeroFactura" #numFactura [required]="true">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="montoFactura" class="form-label bold">Monto del servicio a ajustar:</label>
+                <div class="input-group">
+                  <span class="input-group-text">$</span>
+                  <input type="number" class="form-control" id="montoFactura" #montoFactura required>
+                </div>
+              </div>
+            </div> 
+            <div class="row renglon">
+              <div class="col-md-6 mb-3">
+                <label for="motivo" class="form-label bold">Motivo de Ajuste:</label>
+                <input type="text" class="form-control" id="motivo" placeholder="PROBLEMAS_TECNICOS" disabled>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="servicioAfectado" class="form-label bold">Servicio afectado:</label>
+                <input type="text" class="form-control" id="servicioAfectado" placeholder="Internet + Flow" #servicioAfectado required>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center row renglon">
+              <div class="col-md-6">
+                <label for="fechaInicio" class="form-label bold">Fecha Inicio:</label>
+                <input type="date" id="fechaInicio" class="form-control" required #fechaInicio>
+              </div>
+              <div class="col-md-6">
+                <label for="fechaFin" class="form-label bold">Fecha Fin:</label>
+                <input type="date" id="fechaFin" class="form-control" #fechaFin required>
+              </div>
+            </div>
+            <div class="d-flex row renglon">
+              <div class="col-md-6 text-center">
+                <button type="button" class="btn btn-secondary my-2" (click)="setInicializador()">BORRAR</button>
+              </div>
+              <div class="col-md-6 text-center">
+                <button type="submit" class="btn btn-primary my-2 btn-calcular">CALCULAR</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col cabecera bold">RESULTADOS</div>
+            </div>
+            <div class="row mb-3 mt-1">
+              <div class="col bold">Monto a ajustar: <span style="color: rgba(85, 106, 126, 0.808);">(sin impuestos)</span> $ {{ montoSinImpuestos }}</div>
+            </div>
+            <div class="row mb-3">
+              <div class="col bold mb-2">Monto real ajustado: ${{montoConImpuestos}}</div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col cabecera bold">Salida de datos</div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <form>
+                <fieldset disabled>
+                  <div class="mb-3">
+                    <label for="disabledSelect" class="form-label bold">Motivo de ajuste</label>
+                    <select id="disabledSelect" class="form-select" type="disabledSelect">
+                      <option>Problemas Técnicos</option>
+                    </select> 
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="formulario" class="form-label bold">Formulario:</label>
+              <textarea rows="8" cols="50" [(ngModel)]="formattedText" id="formulario" disabled="true"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="text-center">
+              <button type="button" class="btn btn-success my-2" (click)="copiarAlPortapapeles()">COPIAR AL PORTAPAPELES</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tercera columna: Tabla derecha -->
+  </div>
+</div>
+
+<!-- <div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Debe completar todos los campos del formulario.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div> -->
+
+<!-- TOASTERROR EN CASO DE QUE NO COMPLETE EL FORMULARIO COMPLETO -->
+<div class="toast-container position-fixed top-0 start-0 p-1 mt-3">
+  <div id="liveToastError" class="toast bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Error</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Debe completar todos los campos del formulario.
+    </div>
+  </div>
+</div>
+
+<!-- TOASTALERT EN CASO DE QUE LA FECHA NO SEA CORRECTA -->
+<div class="toast-container position-fixed top-0 start-0 p-1 mt-3">
+  <div id="liveToastAlert" class="toast bg-warning" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Alerta</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      La fecha inicial no debe superar a la fecha final.
+    </div>
+  </div>
+</div>
+<!-- TOASTCOPY cuando se copia desde el boton -->
+<div class="toast-container position-fixed top-0 start-0 p-1 mt-3">
+  <div id="liveToastCopy" class="toast bg-info" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Exito</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Copiado al portapapeles.
+    </div>
+  </div>
+</div>
+<!-- TOASTOK en caso de que esten las validaciones ok y se realice el calculo -->
+<div class="toast-container position-fixed top-0 start-0 p-2 mt-3">
+  <div id="liveToastOk" class="toast bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Calculo Exitoso</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Ya podes realizar el ajuste.
+    </div>
+  </div>
+</div>
+
+<footer class="text-light footer">
+  <div class="container p-3 mt-2">
+      <p class="text-center"> <b>Calculadora De Ajustes</b> </p>
+      <u><p class="text-center">Programador: Quiroga Pacheco Leonel</p></u>
+  </div>
+</footer>
+
+<router-outlet />
