@@ -43,17 +43,17 @@ export class AppComponent {
   // Método para formatear la fecha
   formatDate(dateString: string): string {
     const date = new Date(dateString); // Convertir el string a Date
-    var day = ('0' + (date.getDate()+1)).slice(-2); // Obtener el día (dos dígitos)
-    var month = ('0' + (date.getMonth() + 1)).slice(-2); // Obtener el mes (dos dígitos)
+    const day = ('0' + (date.getDate()+1)).slice(-2); // Obtener el día (dos dígitos)
+    const month = ('0' + (date.getMonth() + 1)).slice(-2); // Obtener el mes (dos dígitos)
     const year = date.getFullYear(); // Obtener el año
 
     // asignar cantidad de dias dependiendo el mes de fechaInicio
     this.diasMes = this.getDaysInMonth(dateString);
     
-    if( day > this.diaMes ){
+    /*if( day > this.diasMes ){
       day = 1;
-      this.month++;
-    }
+      month++;
+    }*/
 
     return `${day}/${month}/${year}`; // Formato dd/mm/yyyy
   }
