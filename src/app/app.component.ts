@@ -44,14 +44,15 @@ export class AppComponent {
   formatDate(dateString: string): string {
     const date = new Date(dateString); // Convertir el string a Date
     var day = ('0' + (date.getDate()+1)).slice(-2); // Obtener el día (dos dígitos)
-    const month = ('0' + (date.getMonth() + 1)).slice(-2); // Obtener el mes (dos dígitos)
+    var month = ('0' + (date.getMonth() + 1)).slice(-2); // Obtener el mes (dos dígitos)
     const year = date.getFullYear(); // Obtener el año
 
     // asignar cantidad de dias dependiendo el mes de fechaInicio
-    this.diasMes = getDaysInMonth(dateString: string);
+    this.diasMes = this.getDaysInMonth(dateString: string);
 
     if( this.day > this.diaMes ){
       this.day = 1;
+      this.month++;
     }
 
     return `${day}/${month}/${year}`; // Formato dd/mm/yyyy
