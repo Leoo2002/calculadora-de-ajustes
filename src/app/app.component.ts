@@ -49,9 +49,9 @@ export class AppComponent {
 
     // asignar cantidad de dias dependiendo el mes de fechaInicio
     this.diasMes = this.getDaysInMonth(dateString);
-
-    if( this.day > this.diaMes ){
-      this.day = 1;
+    
+    if( day > this.diaMes ){
+      day = 1;
       this.month++;
     }
 
