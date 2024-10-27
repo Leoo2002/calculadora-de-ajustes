@@ -48,7 +48,7 @@ export class AppComponent {
     const year = date.getFullYear(); // Obtener el año
 
     // asignar cantidad de dias dependiendo el mes de fechaInicio
-    this.diasMes = this.getDaysInMonth(dateString: string);
+    this.diasMes = this.getDaysInMonth(dateString);
 
     if( this.day > this.diaMes ){
       this.day = 1;
