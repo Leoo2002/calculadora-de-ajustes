@@ -59,7 +59,7 @@ export class AppComponent {
     const endDate = new Date(fechaFin); // Convertir fechaFin a Date
 
     const differenceInTime = endDate.getTime() - startDate.getTime(); // Diferencia en milisegundos
-    const differenceInDays = differenceInTime / (1000 * 3600 * 24); // Convertir de milisegundos a días
+    const differenceInDays = (differenceInTime / (1000 * 3600 * 24)+1); // Convertir de milisegundos a días
 
     return Math.ceil(differenceInDays); // Redondear hacia arriba para obtener días completos
   }
