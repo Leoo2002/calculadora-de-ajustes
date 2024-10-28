@@ -41,21 +41,15 @@ export class AppComponent {
   }
 
   // Método para formatear la fecha
-  formatDate(dateString: string): string {
-    const date = new Date(dateString); // Convertir el string a Date
-    const day = ('0' + (date.getDate()+1)).slice(-2); // Obtener el día (dos dígitos)
-    const month = ('0' + (date.getMonth() + 1)).slice(-2); // Obtener el mes (dos dígitos)
-    const year = date.getFullYear(); // Obtener el año
+  formatDate(dateString: string): string {    
 
-    // asignar cantidad de dias dependiendo el mes de fechaInicio
-    this.diasMes = this.getDaysInMonth(dateString);
-    
-    /*if( day > this.diasMes ){
-      day = 1;
-      month++;
-    }*/
+    // se usa sin transformar a Date para que no transforme a zona horaria ya que causaba que pierda un dia a la hora
+    // de cambiar el formato de yyyy-mm-dd a dd-mm-yyyy
+    const [year, month, day] = dateString.split('-'); // Divide en año, mes y día
+    const formattedDate = `${day}/${month}/${year}`; // Formato dd/mm/yyyy
 
-    return `${day}/${month}/${year}`; // Formato dd/mm/yyyy
+    console.log(formattedDate); // Imprime la fecha en formato modificado dd/mm/yyyy
+    return formattedDate;
   }
 
   // Método para calcular la diferencia de días
