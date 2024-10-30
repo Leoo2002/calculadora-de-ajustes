@@ -23,9 +23,14 @@
     overflow-x: hidden; /* Esto debería ayudar a evitar el desbordamiento horizontal */
     height: 0%;
     margin: 0 auto; /* Esto centra el div horizontalmente */
-    padding: 0px 0px; /* Opcional, para agregar espacio interno */
+    padding: 2%; /* Opcional, para agregar espacio interno */
     width: 110%;
     box-sizing: border-box;
+}
+
+.title{
+    color:#ffffff; 
+    text-align: center;
 }
 
 
@@ -46,7 +51,46 @@
     border-right: 2px solid #b2b2b2;
 }
 
+/* Efecto de brillo dorado y máquina de escribir */
+.autor {
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: inline-block;
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid gold; /* Puntero dorado */
+    width: 0;
+    background: linear-gradient(90deg, rgb(184, 142, 38), rgb(255, 238, 0), rgb(184, 142, 38));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: typing 8s steps(36, end) infinite, blink .5s step-end infinite, shine 1s ease-in-out infinite;
+}
+
+/* Efecto máquina de escribir */
+@keyframes typing {
+    0% { width: 0; }
+    25% { width: 36ch; } /* Completa la escritura en el 25% del tiempo total */
+    100% { width: 36ch; } /* Mantiene el ancho hasta el final del ciclo */
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+/* Efecto de brillo */
+@keyframes shine {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+}
+
+
+
+
+
 .footer{
+    text-align: center;
     width: 110%;
     overflow-x: hidden; /* Esto debería ayudar a evitar el desbordamiento horizontal */
     background: rgb(0,255,184);
