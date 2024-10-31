@@ -137,7 +137,7 @@ export class AppComponent {
 
     //Calcular monto CON impuestos
     console.log(this.montoFactura,this.diasMes,this.cantidadDias)
-    this.montoConImpuestos = Math.round((this.montoFactura / this.diasMes * (this.cantidadDias + 1)) * 100) / 100;
+    this.montoConImpuestos = Math.round(((this.montoFactura / this.diasMes) * (this.cantidadDias)) * 100) / 100;
     //Calcular monto SIN impuestos
     this.montoSinImpuestos = Math.round((this.montoConImpuestos / 1.21) * 100) / 100;
 
