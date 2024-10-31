@@ -56,7 +56,7 @@ export class AppComponent {
   calculateDays(fechaInicio: string, fechaFin: string): number {
     const startDate = new Date(fechaInicio); // Convertir fechaInicio a Date
     const endDate = new Date(fechaFin); // Convertir fechaFin a Date
-
+    
     const differenceInTime = endDate.getTime() - startDate.getTime(); // Diferencia en milisegundos
     const differenceInDays = (differenceInTime / (1000 * 3600 * 24)+1); // Convertir de milisegundos a días
 
@@ -136,6 +136,7 @@ export class AppComponent {
     this.diasMes = this.getDaysInMonth(fechaInicio);
 
     //Calcular monto CON impuestos
+    console.log(this.montoFactura,this.diasMes,this.cantidadDias)
     this.montoConImpuestos = Math.round((this.montoFactura / this.diasMes * (this.cantidadDias + 1)) * 100) / 100;
     //Calcular monto SIN impuestos
     this.montoSinImpuestos = Math.round((this.montoConImpuestos / 1.21) * 100) / 100;
